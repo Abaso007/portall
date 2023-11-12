@@ -4,9 +4,7 @@ from .models import Shortcut
 import re
 
 def formaturl(url):
-    if not re.match('(?:http|ftp|https)://', url):
-        return 'https://{}'.format(url)
-    return url
+    return f'https://{url}' if not re.match('(?:http|ftp|https)://', url) else url
 
 def index(request):
     shortcut_list = Shortcut.objects.order_by('-category')
